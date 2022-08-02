@@ -1,15 +1,92 @@
 ﻿
+
+Imports Box.V2.Models
+
 Public Class Form1
+    Public Const MSG_AUTH_ON As String = "ON"
+    Public Const MSG_AUTH_OFF As String = "OFF"
+
+    Private boxUtil As BoxUtil
+    Private mBoxConf = New BoxAppConfig()
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' サンプル：格納先設定
+        mBoxConf.ConfigJson = "./json/config.json"
 
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim conf = New BoxAppConfig()
-        conf.ConfigJson = "./json/config.json"
-        Dim hoge = New BoxUtil
-        hoge.mAppConfig = conf
-        hoge.Authentication()
+    Private Async Sub btnJWTAuth_Click(sender As Object, e As EventArgs) Handles btnJWTAuth.Click
+
+        Try
+            ' JWT認証準備
+            boxUtil = New BoxUtil(mBoxConf)
+
+            ' 認証とトークン取得
+            Dim token = Await boxUtil.Authentication()
+
+            ' 認証確認
+            If String.IsNullOrEmpty(token) Then
+                SetAuthState(False)
+            Else
+
+                boxUtil.mToken = token
+                SetAuthState(True)
+            End If
+        Catch ex As Exception
+            SetAuthState(False)
+            TbMsg.Text = ex.ToString
+        End Try
 
     End Sub
+
+    Private Async Sub BtnGetFolderId_Click(sender As Object, e As EventArgs) Handles BtnGetFolderId.Click
+        TbMsg.Text = ""
+        Dim fid As String
+        fid = TbRootFolderId.Text
+        '' 未認証の時は終了
+        If Not IsAuthenticated() Then
+            Exit Sub
+        End If
+
+        Try
+
+            Dim fInf As BoxFolder = Await boxUtil.GetFolderInfo(fid)
+            For Each item In fInf.ItemCollection.Entries
+                TbMsg.Text += item.Id & " : " & item.Type & " : " & item.Name
+            Next
+        Catch ex As Exception
+            TbMsg.Text = ex.ToString
+        End Try
+
+    End Sub
+
+
+#Region "GUI操作"
+
+    ''' <summary>
+    ''' 認証チェック
+    ''' </summary>
+    ''' <returns></returns>
+    Private Function IsAuthenticated() As Boolean
+        If String.Equals(LbAuthState.Text, MSG_AUTH_ON) Then
+            Return True
+        Else
+            MessageBox.Show("認証ボタンを押してください。")
+            Return False
+        End If
+    End Function
+
+    ''' <summary>
+    ''' 認証状況設定
+    ''' </summary>
+    ''' <param name="isAuthOn"></param>
+    Private Sub SetAuthState(ByVal isAuthOn)
+        If isAuthOn Then
+            LbAuthState.Text = MSG_AUTH_ON
+        Else
+            LbAuthState.Text = MSG_AUTH_OFF
+        End If
+    End Sub
+#End Region
+
 End Class

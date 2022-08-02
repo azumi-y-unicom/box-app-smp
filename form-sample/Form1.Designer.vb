@@ -22,33 +22,98 @@ Partial Class Form1
     'コード エディターを使って変更しないでください。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.btnJWTAuth = New System.Windows.Forms.Button()
+        Me.TbMsg = New System.Windows.Forms.TextBox()
+        Me.BtnGetFolderId = New System.Windows.Forms.Button()
+        Me.TbRootFolderId = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.TbTargetFolderName = New System.Windows.Forms.TextBox()
+        Me.LbAuthState = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
-        'Button1
+        'btnJWTAuth
         '
-        Me.Button1.Location = New System.Drawing.Point(12, 28)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(158, 23)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnJWTAuth.Location = New System.Drawing.Point(12, 28)
+        Me.btnJWTAuth.Name = "btnJWTAuth"
+        Me.btnJWTAuth.Size = New System.Drawing.Size(82, 23)
+        Me.btnJWTAuth.TabIndex = 0
+        Me.btnJWTAuth.Text = "JWT認証"
+        Me.btnJWTAuth.UseVisualStyleBackColor = True
         '
-        'TextBox1
+        'TbMsg
         '
-        Me.TextBox1.Location = New System.Drawing.Point(12, 113)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(537, 19)
-        Me.TextBox1.TabIndex = 1
+        Me.TbMsg.Location = New System.Drawing.Point(12, 177)
+        Me.TbMsg.Multiline = True
+        Me.TbMsg.Name = "TbMsg"
+        Me.TbMsg.Size = New System.Drawing.Size(587, 173)
+        Me.TbMsg.TabIndex = 1
+        '
+        'BtnGetFolderId
+        '
+        Me.BtnGetFolderId.Location = New System.Drawing.Point(506, 80)
+        Me.BtnGetFolderId.Name = "BtnGetFolderId"
+        Me.BtnGetFolderId.Size = New System.Drawing.Size(93, 23)
+        Me.BtnGetFolderId.TabIndex = 2
+        Me.BtnGetFolderId.Text = "フォルダID取得"
+        Me.BtnGetFolderId.UseVisualStyleBackColor = True
+        '
+        'TbRootFolderId
+        '
+        Me.TbRootFolderId.Location = New System.Drawing.Point(117, 84)
+        Me.TbRootFolderId.Name = "TbRootFolderId"
+        Me.TbRootFolderId.Size = New System.Drawing.Size(80, 19)
+        Me.TbRootFolderId.TabIndex = 3
+        Me.TbRootFolderId.Text = "0"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(12, 87)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(99, 12)
+        Me.Label1.TabIndex = 4
+        Me.Label1.Text = "初期位置フォルダID"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(223, 87)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(76, 12)
+        Me.Label2.TabIndex = 5
+        Me.Label2.Text = "対象フォルダ名"
+        '
+        'TbTargetFolderName
+        '
+        Me.TbTargetFolderName.Location = New System.Drawing.Point(305, 84)
+        Me.TbTargetFolderName.Name = "TbTargetFolderName"
+        Me.TbTargetFolderName.Size = New System.Drawing.Size(157, 19)
+        Me.TbTargetFolderName.TabIndex = 6
+        Me.TbTargetFolderName.Text = "0"
+        '
+        'LbAuthState
+        '
+        Me.LbAuthState.AutoSize = True
+        Me.LbAuthState.Location = New System.Drawing.Point(127, 38)
+        Me.LbAuthState.Name = "LbAuthState"
+        Me.LbAuthState.Size = New System.Drawing.Size(27, 12)
+        Me.LbAuthState.TabIndex = 7
+        Me.LbAuthState.Text = "OFF"
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(561, 362)
-        Me.Controls.Add(Me.TextBox1)
-        Me.Controls.Add(Me.Button1)
+        Me.ClientSize = New System.Drawing.Size(611, 362)
+        Me.Controls.Add(Me.LbAuthState)
+        Me.Controls.Add(Me.TbTargetFolderName)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.TbRootFolderId)
+        Me.Controls.Add(Me.BtnGetFolderId)
+        Me.Controls.Add(Me.TbMsg)
+        Me.Controls.Add(Me.btnJWTAuth)
         Me.Name = "Form1"
         Me.Text = "Form1"
         Me.ResumeLayout(False)
@@ -56,6 +121,12 @@ Partial Class Form1
 
     End Sub
 
-    Friend WithEvents Button1 As Button
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents btnJWTAuth As Button
+    Friend WithEvents TbMsg As TextBox
+    Friend WithEvents BtnGetFolderId As Button
+    Friend WithEvents TbRootFolderId As TextBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents TbTargetFolderName As TextBox
+    Friend WithEvents LbAuthState As Label
 End Class
