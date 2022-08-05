@@ -40,16 +40,23 @@ Public Class BoxUtil
     End Function
 
 
-    Public Async Function GetFolderInfo(ByVal pId As String) As Task(Of BoxFolder)
+    ''' <summary> boxフォルダ情報を取得する </summary>
+    ''' <param name="folderId">フォルダを表す一意の識別子</param>
+    ''' <returns></returns>
+    Public Async Function GetFolderInfo(ByVal folderId As String) As Task(Of BoxFolder)
         Dim client As BoxClient = session.AdminClient(mToken)
-        Return Await client.FoldersManager.GetInformationAsync(pId)
+        Return Await client.FoldersManager.GetInformationAsync(folderId)
 
     End Function
 
-    Public Async Function GetFolderId(ByVal pId As String, ByVal targetName As String) As Task(Of BoxFolder)
+    ''' <summary>  </summary>
+    ''' <param name="folderId">フォルダを表す一意の識別子</param>
+    ''' <param name="targetName"></param>
+    ''' <returns></returns>
+    Public Async Function GetFolderId(ByVal folderId As String, ByVal targetName As String) As Task(Of BoxFolder)
         Dim client As BoxClient = session.AdminClient(mToken)
 
-        Dim fInfo As BoxFolder = Await client.FoldersManager.GetInformationAsync(pId)
+        Dim fInfo As BoxFolder = Await client.FoldersManager.GetInformationAsync(folderId)
         ' For Each item In fInfo.ItemCollection.Entries
         ' item.Type Box.V2.
         ' Next

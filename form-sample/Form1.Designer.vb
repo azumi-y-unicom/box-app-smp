@@ -30,6 +30,8 @@ Partial Class Form1
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TbTargetFolderName = New System.Windows.Forms.TextBox()
         Me.LbAuthState = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'btnJWTAuth
@@ -51,7 +53,7 @@ Partial Class Form1
         '
         'BtnGetFolderId
         '
-        Me.BtnGetFolderId.Location = New System.Drawing.Point(506, 80)
+        Me.BtnGetFolderId.Location = New System.Drawing.Point(506, 96)
         Me.BtnGetFolderId.Name = "BtnGetFolderId"
         Me.BtnGetFolderId.Size = New System.Drawing.Size(93, 23)
         Me.BtnGetFolderId.TabIndex = 2
@@ -60,25 +62,25 @@ Partial Class Form1
         '
         'TbRootFolderId
         '
-        Me.TbRootFolderId.Location = New System.Drawing.Point(117, 84)
+        Me.TbRootFolderId.Location = New System.Drawing.Point(117, 100)
         Me.TbRootFolderId.Name = "TbRootFolderId"
-        Me.TbRootFolderId.Size = New System.Drawing.Size(80, 19)
+        Me.TbRootFolderId.Size = New System.Drawing.Size(100, 19)
         Me.TbRootFolderId.TabIndex = 3
         Me.TbRootFolderId.Text = "0"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 87)
+        Me.Label1.Location = New System.Drawing.Point(12, 103)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(99, 12)
+        Me.Label1.Size = New System.Drawing.Size(85, 12)
         Me.Label1.TabIndex = 4
-        Me.Label1.Text = "初期位置フォルダID"
+        Me.Label1.Text = "対象のフォルダID"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(223, 87)
+        Me.Label2.Location = New System.Drawing.Point(223, 103)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(76, 12)
         Me.Label2.TabIndex = 5
@@ -86,7 +88,7 @@ Partial Class Form1
         '
         'TbTargetFolderName
         '
-        Me.TbTargetFolderName.Location = New System.Drawing.Point(305, 84)
+        Me.TbTargetFolderName.Location = New System.Drawing.Point(305, 100)
         Me.TbTargetFolderName.Name = "TbTargetFolderName"
         Me.TbTargetFolderName.Size = New System.Drawing.Size(157, 19)
         Me.TbTargetFolderName.TabIndex = 6
@@ -101,11 +103,31 @@ Partial Class Form1
         Me.LbAuthState.TabIndex = 7
         Me.LbAuthState.Text = "OFF"
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(12, 75)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(108, 12)
+        Me.Label3.TabIndex = 8
+        Me.Label3.Text = "アプリ初期位置に戻る"
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(126, 70)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(54, 23)
+        Me.Button1.TabIndex = 9
+        Me.Button1.Text = "戻る"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(611, 362)
+        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.LbAuthState)
         Me.Controls.Add(Me.TbTargetFolderName)
         Me.Controls.Add(Me.Label2)
@@ -129,4 +151,6 @@ Partial Class Form1
     Friend WithEvents Label2 As Label
     Friend WithEvents TbTargetFolderName As TextBox
     Friend WithEvents LbAuthState As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Button1 As Button
 End Class

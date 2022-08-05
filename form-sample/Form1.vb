@@ -1,5 +1,6 @@
 ﻿
 
+Imports System.Configuration
 Imports Box.V2.Models
 
 Public Class Form1
@@ -8,10 +9,13 @@ Public Class Form1
 
     Private boxUtil As BoxUtil
     Private mBoxConf = New BoxAppConfig()
+    Private appRootId As String
+
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' サンプル：格納先設定
         mBoxConf.ConfigJson = "./json/config.json"
+        appRootId = ConfigurationManager.AppSettings("box-root-folder-id")
 
     End Sub
 
@@ -50,12 +54,21 @@ Public Class Form1
 
         Try
 
-            Dim fInf As BoxFolder = Await boxUtil.GetFolderInfo(fid)
-            For Each item In fInf.ItemCollection.Entries
-                TbMsg.Text += item.Id & " : " & item.Type & " : " & item.Name
+            Dim fInfo As BoxFolder = Await boxUtil.GetFolderInfo(fid)
+
+            ' ID=0(ルート)の場合はParentはNothing
+            If fInfo.Parent IsNot Nothing Then
+                TbMsg.Text += fInfo.Parent.Id & " : " & fInfo.Parent.Name & vbCrLf
+                TbMsg.Text += "------" & vbCrLf
+            End If
+
+
+            For Each item In fInfo.ItemCollection.Entries
+                TbMsg.Text += item.Id & " : " & item.Type & " : " & item.Name & vbCrLf
+
             Next
         Catch ex As Exception
-            TbMsg.Text = ex.ToString
+            TbMsg.Text = ex.ToString & vbCrLf
         End Try
 
     End Sub
@@ -86,6 +99,14 @@ Public Class Form1
         Else
             LbAuthState.Text = MSG_AUTH_OFF
         End If
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        TbRootFolderId.Text = ""
+    End Sub
+
+    Private Sub TbRootFolderId_TextChanged(sender As Object, e As EventArgs) Handles TbRootFolderId.TextChanged
+
     End Sub
 #End Region
 
