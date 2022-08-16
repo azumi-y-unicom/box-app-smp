@@ -9,13 +9,14 @@ Public Class Form1
 
     Private boxUtil As BoxUtil
     Private mBoxConf = New BoxAppConfig()
-    Private appRootId As String
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' サンプル：格納先設定
-        mBoxConf.ConfigJson = "./json/config.json"
-        appRootId = ConfigurationManager.AppSettings("box-root-folder-id")
+        mBoxConf.AuthJsonFilePath = ConfigurationManager.AppSettings("auth-json-file-path")
+        mBoxConf.AppRootFolderId = ConfigurationManager.AppSettings("box-root-folder-id")
+        mBoxConf.UploadFileSizeThreshold = Long.Parse(ConfigurationManager.AppSettings("upload-file-size-threshold"))
+        lb_approotid.Text = mBoxConf.AppRootFolderId
 
     End Sub
 
@@ -46,6 +47,25 @@ Public Class Form1
     Private Async Sub BtnGetFolderId_Click(sender As Object, e As EventArgs) Handles BtnGetFolderId.Click
         TbMsg.Text = ""
         Dim fid As String
+        Try
+
+            fid = Await boxUtil.GetFolderIdByPath("exp1/exp2")
+
+            If fid = "" Then
+                TbMsg.Text = "対象のフォルダはありません。"
+            End If
+            TbMsg.Text = fid
+        Catch ex As Exception
+
+            TbMsg.Text = ex.ToString
+
+
+        End Try
+    End Sub
+
+    Private Async Sub hogeAsync()
+        TbMsg.Text = ""
+        Dim fid As String
         fid = TbRootFolderId.Text
         '' 未認証の時は終了
         If Not IsAuthenticated() Then
@@ -70,9 +90,7 @@ Public Class Form1
         Catch ex As Exception
             TbMsg.Text = ex.ToString & vbCrLf
         End Try
-
     End Sub
-
 
 #Region "GUI操作"
 
@@ -102,12 +120,31 @@ Public Class Form1
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        TbRootFolderId.Text = ""
+        TbRootFolderId.Text = mBoxConf.AppRootFolderId
     End Sub
 
-    Private Sub TbRootFolderId_TextChanged(sender As Object, e As EventArgs) Handles TbRootFolderId.TextChanged
 
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        TbMsg.Text = ""
+        Dim fid As String
+        fid = TbRootFolderId.Text
+        '' 未認証の時は終了
+        If Not IsAuthenticated() Then
+            Exit Sub
+        End If
+
+        Try
+
+            ' boxUtil.CopyFolder("", "")
+        Catch ex As Exception
+            TbMsg.Text = ex.ToString & vbCrLf
+        End Try
+
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
     End Sub
 #End Region
+
 
 End Class

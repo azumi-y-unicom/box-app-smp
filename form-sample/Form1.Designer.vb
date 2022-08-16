@@ -32,6 +32,10 @@ Partial Class Form1
         Me.LbAuthState = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.lb_approotid = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'btnJWTAuth
@@ -121,11 +125,51 @@ Partial Class Form1
         Me.Button1.Text = "戻る"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(225, 148)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 10
+        Me.Button2.Text = "フォルダコピー"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(270, 28)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(75, 23)
+        Me.Button3.TabIndex = 11
+        Me.Button3.Text = "Button3"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(223, 75)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(66, 12)
+        Me.Label4.TabIndex = 12
+        Me.Label4.Text = "AppRoodId="
+        '
+        'lb_approotid
+        '
+        Me.lb_approotid.AutoSize = True
+        Me.lb_approotid.Location = New System.Drawing.Point(295, 75)
+        Me.lb_approotid.Name = "lb_approotid"
+        Me.lb_approotid.Size = New System.Drawing.Size(38, 12)
+        Me.lb_approotid.TabIndex = 13
+        Me.lb_approotid.Text = "Label5"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(611, 362)
+        Me.Controls.Add(Me.lb_approotid)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.LbAuthState)
@@ -153,4 +197,8 @@ Partial Class Form1
     Friend WithEvents LbAuthState As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Button1 As Button
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Button3 As Button
+    Friend WithEvents Label4 As Label
+    Friend WithEvents lb_approotid As Label
 End Class
