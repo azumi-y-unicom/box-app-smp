@@ -25,3 +25,5 @@ https://ja.developer.box.com/guides/tooling/sdks/
 認証
 https://ja.developer.box.com/guides/authentication/
 
+APIリファレンス
+https://ja.developer.box.com/reference/
