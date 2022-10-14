@@ -10,8 +10,11 @@ https://ja.developer.box.com/
 
 # アプリ作成
 1. 連携アプリの窓口を作成する
-1. APIを利用したアプリを作成する
-1. 
+2. SDKを利用したアプリを作成する
+
+Box SDKについて
+https://ja.developer.box.com/guides/tooling/sdks/
+
 
 
 ## 連携アプリの窓口を作成する
